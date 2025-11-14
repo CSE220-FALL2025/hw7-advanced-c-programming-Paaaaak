@@ -12,7 +12,23 @@ void free_bst_sf(bst_sf *root) {
 }
 
 matrix_sf* add_mats_sf(const matrix_sf *mat1, const matrix_sf *mat2) {
-    return NULL;
+    // Return NULL if either input matrix is NULL
+    if (mat1 == NULL || mat2 == NULL) {
+        return NULL;
+    }
+
+    // Return NULL if the matrices have different dimension
+    if (mat1->num_rows != mat2->num_cols || mat1->num_cols != mat2->num_cols) {
+        return NULL;
+    }
+
+    int num_rows = mat1->num_rows;
+    int num_cols = mat1->num_cols;
+
+    // Allocate the memory to result matrix
+    matrix_sf* m = malloc(sizeof(matrix_sf) + num_rows * num_cols + sizeof(int));
+
+    return m;
 }
 
 matrix_sf* mult_mats_sf(const matrix_sf *mat1, const matrix_sf *mat2) {
